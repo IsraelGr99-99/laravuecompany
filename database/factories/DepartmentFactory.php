@@ -18,10 +18,7 @@ class DepartmentFactory extends Factory
     {
         return [
             //Agregamos registros falsos
-            'name' => $this->faker->jobTitle(),
-            'email' => $this->faker->email(),
-            'phone' => $this->faker->e164PhoneNumber(),
-            'name' => $this->faker->numberBetween(1,6),
+            'name' => $this->faker->jobTitle()
         ];
     }
 }
