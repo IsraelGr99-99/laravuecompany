@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
+            //Añadimos las filas para la base de datos
+            $table->string('name',100);
             $table->timestamps();
         });
     }

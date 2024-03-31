@@ -4,6 +4,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+//Importamos los controladores que vamos a usar
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
+use App\Models\Employee;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +37,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('departments',DepartmentController::class);
+    Route::resource('employees', EmployeeController::class);
+    /**
+     * 'graphic' es el nombre de la ruta
+     * 'EmployeeController::class' -> Es el controlar
+     * 'EmployeeByDepartment' -> Es la funcion que vamos a mandar a llamar
+     * 'name' -> Le asignamos un nombre
+     */
+    Route::get('graphic',[EmployeeController::class,'EmployeeByDepartment'])->name('graphic');
+    Route::get('reports',[EmployeeController::class,'reports'])->name('reports');
 });
 
 require __DIR__.'/auth.php';

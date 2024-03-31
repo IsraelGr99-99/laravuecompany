@@ -17,7 +17,11 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            //Agregamos registros falsos
+            'name' => $this->faker->jobTitle(),
+            'email' => $this->faker->email(),
+            'phone' => $this->faker->e164PhoneNumber(),
+            'name' => $this->faker->numberBetween(1,6),
         ];
     }
 }
